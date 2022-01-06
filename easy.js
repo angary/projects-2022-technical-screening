@@ -37,8 +37,11 @@ const altNumbers = (numArray) => {
     if (pos.length < neg.length) {
         result.push(neg.shift());
     }
-    for (let i = 0; i < pos.length; i++) {
+    for (let i = 0; i < neg.length; i++) {
         result.push(pos[i], neg[i]);
+    }
+    if (pos.length > neg.length) {
+        result.push(pos.at(-1));
     }
     return result;
 }
@@ -97,4 +100,12 @@ array6 = altNumbers(array6)
 const answer6 = [-1, 5, -2, 0, -3, 3, -4]
 for (let i = 0; i < array6.length; i++) {
     assert(array6[i] === answer6[i])
+}
+
+let array7 = [5,5,5,5,-1,-1,-1]
+array7 = altNumbers(array7)
+let answer7 = [5,-1,5,-1,5,-1,5]
+
+for (let i = 0; i < array7.length; i++) {
+    assert(array7[i] === answer7[i])
 }
